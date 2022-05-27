@@ -1,0 +1,46 @@
+<html>
+
+<body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>     
+
+    // Attach a submit handler to the form 
+  // Attach a submit handler to the form 
+
+
+$('#uploadForm').submit(function(e) {
+	var formData = new FormData();
+    formData.append("uploadFiles", $('[name="file"]')[0].files[0]);
+    e.preventDefault();
+    $.ajax({
+        url: $(this).attr("action"),
+        type: 'POST',
+        contentType: 'application/json; charset=utf-8',
+        data: JSON.stringify(formData).id,
+    dataType: 'application/json',
+        success: function( data, textStatus, jQxhr ){
+                    $('#response pre').html( JSON.stringify( data.id )  );
+                },
+                error: function( jqXhr, textStatus, errorThrown ){
+                    console.log( errorThrown );
+                }
+    });
+});
+
+    </script>
+<form id="uploadForm" action="https://api.videoindexer.ai/trial/Accounts/324517cb-f57f-4b61-a5b1-6c85051b92c0/Videos?name=324517cb-f57f-4b61-a5b1-6c85051b92c0&privacy=Private&indexingPreset=Default&streamingPreset=Default&sendSuccessEmail=False&accessToken=<<access_token>></access_token>" method="post" enctype="multipart/form-data" accept-charset="ISO-8859-1">   
+
+      <div class="inputFileCustom">
+        <input type="file" size="45" name="file" id="uploadFiles" accept="application/pdf"/>
+        <label for="uploadFiles">
+            <div class="ic-bt ic-bt-details ic-bt-text btn btn-border">
+            Choose a file
+            </div>
+        </label>
+    </div>
+
+    <input type="submit" value="Upload PDF" class="btn btn-primary" />
+</form>
+    
+</body>
+</html>
