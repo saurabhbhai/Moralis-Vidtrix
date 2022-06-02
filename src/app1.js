@@ -297,6 +297,9 @@ app.get('/main_page',(req,res)=>{
     res.sendFile(__dirname +"/page.html");
 });
 
+app.get('/blockchain_upload',(req,res)=>{
+    res.sendFile(__dirname +"/page19.html");
+});
 
 app.get('/page19',(req,res)=>{
 const keywords19 = req.query.id;	
