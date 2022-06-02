@@ -319,7 +319,7 @@ var options = { method: 'POST',
 request(options, function (error, response, body) {
   if (error) throw new Error(error);
 
-  res.send('<html><body><img src="'+body+'"/></body></html>');
+    res.send("<html><body><script>fetch('https://deep-index.moralis.io/api/v2/ipfs/uploadFolder', {    method: 'POST',    headers: {        'accept': 'application/json',        'X-API-Key': 'cexNuIrndG6kpKifNZZDvMyw2wfJtMXB6DuPV8zTbL89FDOXiqoUYVBXlAwK8TaQ',        'Content-Type': 'application/json'    },    body: JSON.stringify([        {            'path':'"+body+"' ,            'content':'"+body+"'      }    ])}).then(res => res.json())    .then(jsonData => console.log(jsonData));</script><img src='"+body+"'/></body></html>");
 });
 
     
